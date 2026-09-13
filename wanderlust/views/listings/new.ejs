@@ -1,0 +1,44 @@
+<% layout("/layouts/boilerplate") %>
+
+<section class="form-page">
+  <h1 class="form-page__title">List your place</h1>
+  <p class="form-page__subtitle">A few details, and it's on the map.</p>
+
+  <form action="/listings" method="POST" class="listing-form" novalidate>
+    <label class="field">
+      <span>Title</span>
+      <input type="text" name="listing[title]" placeholder="Cozy cabin by the lake" required />
+    </label>
+
+    <label class="field">
+      <span>Description</span>
+      <textarea name="listing[description]" rows="4" placeholder="What makes this place worth the trip?" required></textarea>
+    </label>
+
+    <div class="field-row">
+      <label class="field">
+        <span>Image URL</span>
+        <input type="text" name="listing[image][url]" placeholder="https://..." />
+      </label>
+
+      <label class="field field--small">
+        <span>Price per night (&#8377;)</span>
+        <input type="number" name="listing[price]" min="0" placeholder="1500" required />
+      </label>
+    </div>
+
+    <div class="field-row">
+      <label class="field">
+        <span>Location</span>
+        <input type="text" name="listing[location]" placeholder="Malibu" required />
+      </label>
+
+      <label class="field">
+        <span>Country</span>
+        <input type="text" name="listing[country]" placeholder="United States" required />
+      </label>
+    </div>
+
+    <button type="submit" class="btn btn--primary">Create listing</button>
+  </form>
+</section>

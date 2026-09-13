@@ -1,0 +1,21 @@
+<% layout("/layouts/boilerplate") %>
+
+<article class="show">
+  <div class="show__image" style="background-image: url('<%= listing.image.url %>')"></div>
+
+  <div class="show__content">
+    <p class="show__place"><%= listing.location %>, <%= listing.country %></p>
+    <h1 class="show__title"><%= listing.title %></h1>
+    <p class="show__description"><%= listing.description %></p>
+    <p class="show__price">&#8377;<%= listing.price ? listing.price.toLocaleString("en-IN") : "—" %> <span>/ night</span></p>
+
+    <div class="show__actions">
+      <a href="/listings/<%= listing._id %>/edit" class="btn btn--ghost">Edit listing</a>
+      <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST">
+        <button type="submit" class="btn btn--danger">Delete listing</button>
+      </form>
+    </div>
+  </div>
+</article>
+
+<a href="/listings" class="link back-link">&larr; Back to all stays</a>

@@ -1,0 +1,26 @@
+<% layout("/layouts/boilerplate") %>
+
+<section class="hero">
+  <h1 class="hero__title">Where to next?</h1>
+  <p class="hero__subtitle">Stays with a story, picked from every corner of the map.</p>
+</section>
+
+<section class="grid">
+  <% if (allListings.length === 0) { %>
+    <div class="empty">
+      <p>No stays yet.</p>
+      <a href="/listings/new" class="link">Add the first one &rarr;</a>
+    </div>
+  <% } %>
+
+  <% allListings.forEach(listing => { %>
+    <a class="card" href="/listings/<%= listing._id %>">
+      <div class="card__image" style="background-image: url('<%= listing.image.url %>')"></div>
+      <div class="card__body">
+        <h2 class="card__title"><%= listing.title %></h2>
+        <p class="card__place"><%= listing.location %>, <%= listing.country %></p>
+        <p class="card__price">&#8377;<%= listing.price ? listing.price.toLocaleString("en-IN") : "—" %> <span>/ night</span></p>
+      </div>
+    </a>
+  <% }) %>
+</section>
